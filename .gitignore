@@ -1,1 +1,3 @@
-venv
+# Logs
+checkpoint
+*.ipynb_checkpoints/
