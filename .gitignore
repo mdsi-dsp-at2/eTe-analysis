@@ -2,3 +2,5 @@
 checkpoint
 *.ipynb_checkpoints/
 *./__pycache__/.*
+
+
