@@ -22,10 +22,8 @@ suicide_rate_dataframe = cf.find_all_age_suicide_rate(suicide_rate_dataframe)
 
 
 # Do Melting - Tranform/Combine the multiple  column names of different age groups into one column "Age"
-#suicide_rate_pivot_longer_df = pd.melt(suicide_rate_dataframe, id_vars=["Country", "Sex"], value_vars=["80_above","70to79", "40to49", "30to39", "20to29", "10to19", "all_age"], var_name="Age",value_name="Suicide_rate")
 suicide_rate_pivot_longer_df = cf.pivot_longer_age_columns_to_one(suicide_rate_dataframe, True)
-
-print(suicide_rate_pivot_longer_df)
+#print(suicide_rate_pivot_longer_df)
 
 # Find Top 5 countries of highest suicide rate in "all_age" and "both sexes"
 # And Male/ Female - Age distribution 
@@ -33,16 +31,16 @@ top_5_suicide_rate_bothsex = suicide_rate_pivot_longer_df[(suicide_rate_pivot_lo
 suicide_rate_separatesex = suicide_rate_pivot_longer_df[suicide_rate_pivot_longer_df["Sex"] != "Both sexes"]
 
 ## Get the countries names of top 5 highest suicide rate
-print(top_5_suicide_rate_bothsex["Country"].to_list())
+#print(top_5_suicide_rate_bothsex["Country"].to_list())
 top_5_country_names = top_5_suicide_rate_bothsex["Country"].to_list()
 ## Filtering out Male/Female records belong to the hightest rate countries.
-final_df = suicide_rate_separatesex[suicide_rate_separatesex["Country"].isin(top_5_country_names)]
-#print("final_df",final_df.head())
+top5_suicide_rate = suicide_rate_separatesex[suicide_rate_separatesex["Country"].isin(top_5_country_names)]
+#print("top5_suicide_rate",final_df.head())
 
 
 # ========= plotting graph =========
 sns.set_style("whitegrid")
-gg = sns.catplot(data = final_df, kind="bar", x="Country", y="Suicide_rate",hue="Sex", palette="husl", alpha=.9, height=5, ci=None)
+gg = sns.catplot(data = top5_suicide_rate, kind="bar", x="Country", y="Suicide_rate",hue="Sex", palette="husl", alpha=.9, height=5, ci=None)
 gg.despine(left=True).set_ylabels("Suicide rate")
 plt.title("Top 5 Countries with Highest Suicide Rate")
 plt.show()
