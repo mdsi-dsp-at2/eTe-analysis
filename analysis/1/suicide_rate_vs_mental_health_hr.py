@@ -12,44 +12,46 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import sys
 
+# Importing customised functions which handling data wrangling
+import common_functions as cf
+
 # ========= Getting Data =========
 
-suicide_rate_data_filepath = os.path.join("..","..","processed_data", "crude_suicide_rates.csv")
+suicide_rate_data_filepath = os.path.join('..','..','processed_data', 'crude_suicide_rates.csv')
 suicide_rate_dataframe = pd.read_csv(suicide_rate_data_filepath, index_col=0)
 #print(suicide_rate_dataframe.head())
 
-hr_data_filepath = os.path.join("..","..","raw_data", "human_resources.csv")
+hr_data_filepath = os.path.join('..','..','raw_data', 'human_resources.csv')
 hr_dataframe = pd.read_csv(hr_data_filepath, index_col=0)
 #print(hr_dataframe.head())
 
 # ========= Prepare Data =========
-suicide_rate_dataframe["all_age_suicide_rate"] = suicide_rate_dataframe["80_above"] + suicide_rate_dataframe["70to79"] + suicide_rate_dataframe["60to69"]+ suicide_rate_dataframe["50to59"]
-+ suicide_rate_dataframe["40to49"]+ suicide_rate_dataframe["30to39"]+ suicide_rate_dataframe["20to29"] + suicide_rate_dataframe["10to19"]
+suicide_rate_dataframe = cf.find_all_age_suicide_rate(suicide_rate_dataframe)
 #print(suicide_rate_dataframe.head())
 
 # Filter the suicide rate data for 
-suicide_rate = suicide_rate_dataframe[["Country", "all_age_suicide_rate", "Sex"]]
+suicide_rate = suicide_rate_dataframe[['Country', 'all_age', 'Sex']]
 
 # Merge the two dataframes for plotting purpose
-merged_dataframe = pd.merge(suicide_rate, hr_dataframe, on="Country")
+merged_dataframe = pd.merge(suicide_rate, hr_dataframe, on='Country')
 print(merged_dataframe.head())
 
 # ========= Plotting (1) =========
 #Plotting to to visualise the association between Suicide rate of All age and Psychiatrists
 
 # setting style
-sns.set_style("darkgrid", {"axes.facecolor": ".9"})
+sns.set_style('darkgrid', {'axes.facecolor': '.9'})
 
 # https://seaborn.pydata.org/tutorial/aesthetics.html
 # https://seaborn.pydata.org/generated/seaborn.lmplot.html
 
-plot_psy = sns.lmplot(data= merged_dataframe, x="Psychiatrists", y= "all_age_suicide_rate", palette="Set1", col="Sex", hue="Sex")
-plot_psy.set_axis_labels("Psychiatrists 100,000 population", "Suicide Rate in All age")
+plot_psy = sns.lmplot(data= merged_dataframe, x='Psychiatrists', y= 'all_age', palette='Set1', col='Sex', hue='Sex')
+plot_psy.set_axis_labels('Psychiatrists 100,000 population', 'Suicide Rate in All age')
 
 # This is to adjust the axis and display the main title
-# without it, seaborn"s facet titles and the main title are overlapped
+# without it, seaborn's facet titles and the main title are overlapped
 plt.subplots_adjust(top=0.9)
-plot_psy.fig.suptitle("Global Psychiatrists Availability Vs Suicide Rate in 2016")
+plot_psy.fig.suptitle('Global Psychiatrists Availability Vs Suicide Rate in 2016')
 plt.show()
 
 
@@ -57,25 +59,25 @@ plt.show()
 # ========= Plotting (2) =========
 # Plotting to visualise the association between Suicide rate of All age and Nurses among Sexes
 
-plot_nurses = sns.lmplot(data= merged_dataframe, x="Nurses", y= "all_age_suicide_rate", palette="Set1", col="Sex", hue="Sex") 
-plot_nurses.set_axis_labels("Nurses per 100,000 population", "Suicide Rate in All Ages")
+plot_nurses = sns.lmplot(data= merged_dataframe, x='Nurses', y= 'all_age_suicide_rate', palette='Set1', col='Sex', hue='Sex') 
+plot_nurses.set_axis_labels('Nurses per 100,000 population', 'Suicide Rate in All Ages')
 
 # This is to adjust the axis and display the main title
-# without it, seaborn"s facet titles and the main title are overlapped
+# without it, seaborn's facet titles and the main title are overlapped
 plt.subplots_adjust(top=0.9)
-plot_nurses.fig.suptitle("World Nurses Availability Vs Suicide Rate in 2016")
+plot_nurses.fig.suptitle('World Nurses Availability Vs Suicide Rate in 2016')
 
 plt.show()
 
 # ========= Plotting (3) =========
 #Plotting to visualise the association between Suicide rate of All age and Psychiatrists among Sexes
 
-plot_psy = sns.lmplot(data= merged_dataframe, x="Psychologists", y= "all_age_suicide_rate", palette="Set1", col="Sex", hue="Sex") 
-plot_psy.set_axis_labels("Psychologists per 100,000 population", "Suicide Rate in All Ages")
+plot_psy = sns.lmplot(data= merged_dataframe, x='Psychologists', y= 'all_age_suicide_rate', palette='Set1', col='Sex', hue='Sex') 
+plot_psy.set_axis_labels('Psychologists per 100,000 population', 'Suicide Rate in All Ages')
 
 # This is to adjust the axis and display the main title
-# without it, seaborn"s facet titles and the main title are overlapped
+# without it, seaborn's facet titles and the main title are overlapped
 plt.subplots_adjust(top=0.9)
-plot_psy.fig.suptitle("World Psychologists Availability Vs Suicide Rate in 2016")
+plot_psy.fig.suptitle('World Psychologists Availability Vs Suicide Rate in 2016')
 
 plt.show()
