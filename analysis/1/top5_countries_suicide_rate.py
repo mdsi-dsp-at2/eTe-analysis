@@ -18,12 +18,11 @@ import common_functions as cf
 # Getting Data of crude suicide rate
 suicide_rate_data_filepath = os.path.join("..", "..","processed_data", "crude_suicide_rates.csv")
 suicide_rate_dataframe = pd.read_csv(suicide_rate_data_filepath, index_col=0)
-#print(human_resource_dataframe.head())
-
+#print(suicide_rate_dataframe.head())
 
 # ========= Prepare Data =========
 
-# Calculate the total suicide rate of all different ages
+# Get the suicide rate of all different ages
 suicide_rate_dataframe = cf.find_all_age_suicide_rate(suicide_rate_dataframe)
 # print(suicide_rate_dataframe.head())
 
@@ -32,14 +31,14 @@ top_5_suicide_rate = suicide_rate_dataframe[suicide_rate_dataframe["Sex"] == "Bo
 #print(top_5_suicide_rate.head())
 
 # Do Melting - Tranform/Combine the multiple  column names of different age groups into one column "Age"
-top_5_suicide_rate_pivot_longer_df = pd.melt(top_5_suicide_rate, id_vars=["Country"], value_vars=["80_above","70to79", "40to49", "30to39", "20to29", "10to19"], var_name="Age",value_name="Suicide_rate")
+top_5_suicide_rate = cf.pivot_longer_age_columns_to_one(top_5_suicide_rate)
 #print(top_5_suicide_rate_pivot_longer_df)
 
 
 # ========= Plotting  =========
 
 sns.set(color_codes=True)
-plot_top5_country = sns.barplot(x="Country", y="Suicide_rate", hue="Age", data = top_5_suicide_rate_pivot_longer_df)
+plot_top5_country = sns.barplot(x="Country", y="Suicide_rate", hue="Age", data = top_5_suicide_rate)
 plt.title("Top 5 Countries with Highest Suicide Rate")
 plt.ylabel("Suicide rate per 100,000 population")
 plt.show()

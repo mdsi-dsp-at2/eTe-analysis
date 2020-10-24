@@ -19,7 +19,7 @@ suicide_rate_dataframe = cf.find_all_age_suicide_rate(suicide_rate_dataframe)
 #print(suicide_rate_dataframe.head())
 
 # Do Melting - Tranform/Combine the multiple  column names of different age groups into one column "Age"
-suicide_rate_pivot_longer_df = pd.melt(suicide_rate_dataframe, id_vars=["Country", "Sex"], value_vars=["80_above","70to79", "40to49", "30to39", "20to29", "10to19"], var_name="Age",value_name="Suicide_rate")
+suicide_rate_pivot_longer_df = cf.pivot_longer_age_columns_to_one(suicide_rate_dataframe)
 #print(suicide_rate_pivot_longer_df)
 
 # ========= plotting graph =========
