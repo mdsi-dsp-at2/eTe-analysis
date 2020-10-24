@@ -1,8 +1,3 @@
-
-# class Data_Processor:
-#   def __init__(self, suicide_rate_df):
-#     dataframe = suicide_rate_df
-
 import pandas as pd
   
 def find_all_age_suicide_rate(dataframe):

@@ -9,7 +9,7 @@ import seaborn as sns
 import common_functions as cf
 
 # ========= Getting Data =========
-suicide_rate_data_filepath = os.path.join('..','..','processed_data', 'crude_suicide_rates.csv')
+suicide_rate_data_filepath = os.path.join("..","..","processed_data", "crude_suicide_rates.csv")
 suicide_rate_dataframe = pd.read_csv(suicide_rate_data_filepath, index_col=0)
 print(suicide_rate_dataframe.head())
 
@@ -18,18 +18,18 @@ print(suicide_rate_dataframe.head())
 suicide_rate_dataframe = cf.find_all_age_suicide_rate(suicide_rate_dataframe)
 #print(suicide_rate_dataframe.head())
 
-# Do Melting - Tranform/Combine the multiple  column names of different age groups into one column 'Age'
-suicide_rate_pivot_longer_df = pd.melt(suicide_rate_dataframe, id_vars=['Country', 'Sex'], value_vars=['80_above','70to79', '40to49', '30to39', '20to29', '10to19'], var_name='Age',value_name='Suicide_rate')
+# Do Melting - Tranform/Combine the multiple  column names of different age groups into one column "Age"
+suicide_rate_pivot_longer_df = pd.melt(suicide_rate_dataframe, id_vars=["Country", "Sex"], value_vars=["80_above","70to79", "40to49", "30to39", "20to29", "10to19"], var_name="Age",value_name="Suicide_rate")
 #print(suicide_rate_pivot_longer_df)
 
 # ========= plotting graph =========
 # Plotting the suicide rate distribution in FacetGrid
-sns.set_style('dark')
-g = sns.FacetGrid(suicide_rate_pivot_longer_df, col='Age', col_wrap=3)
-g.map_dataframe(plt.hist, x='Suicide_rate')
-g.set_axis_labels('', 'Suicide Rate')
+sns.set_style("dark")
+g = sns.FacetGrid(suicide_rate_pivot_longer_df, col="Age", col_wrap=3)
+g.map_dataframe(plt.hist, x="Suicide_rate")
+g.set_axis_labels("", "Suicide Rate")
 # This is to adjust the axis and display the main title
-# without it, seaborn's facet titles and the main title are overlapped
+# without it, seaborn"s facet titles and the main title are overlapped
 plt.subplots_adjust(top=0.9)
-g.fig.suptitle('Suicide Rate Distribution Analysis by Age')
+g.fig.suptitle("Suicide Rate Distribution Analysis by Age")
 plt.show()
