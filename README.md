@@ -67,10 +67,13 @@ Project Title: Collaborative Development of an end to end project using Centrali
     git pull https://github.com/mdsi-dsp-at2/eTe-analysis
     
 # How to view your commit history in local
+
  - View the history in list style
+
     git log --oneline --decorate 
     
  - View the history in graph style 
+
     git log --graph --oneline --decorate
 
 
