@@ -22,6 +22,7 @@ suicide_rate_dataframe = pd.read_csv(suicide_rate_data_filepath, index_col=0)
 
 
 # ========= Prepare Data =========
+
 # Calculate the total suicide rate of all different ages
 suicide_rate_dataframe = cf.find_all_age_suicide_rate(suicide_rate_dataframe)
 # print(suicide_rate_dataframe.head())
@@ -35,7 +36,8 @@ top_5_suicide_rate_pivot_longer_df = pd.melt(top_5_suicide_rate, id_vars=["Count
 #print(top_5_suicide_rate_pivot_longer_df)
 
 
-# Plotting the result
+# ========= Plotting  =========
+
 sns.set(color_codes=True)
 plot_top5_country = sns.barplot(x="Country", y="Suicide_rate", hue="Age", data = top_5_suicide_rate_pivot_longer_df)
 plt.title("Top 5 Countries with Highest Suicide Rate")
