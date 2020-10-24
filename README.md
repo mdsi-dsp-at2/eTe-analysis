@@ -59,12 +59,15 @@ Project Title: Collaborative Development of an end to end project using Centrali
 - Use "Issues" tab to register the tasks to which member(s) are assigned or your favourite tasks assigned to yourself
 - State Issue Id  "#xx" in the pull request name / title/ message to allow the teams knows that what your Pull request is about and to which task(issue) it is for
 
-# How to keep your local repository updated everyday? Important!!!!
+# Important!!!! Keep your local repository updated everyday.
 
 - Make sure you commit your local changes first
 - Always make git pull before starting your work of the day in your local directory/repo
 
     git pull https://github.com/mdsi-dsp-at2/eTe-analysis
+    
+ - Strongly encourage to do this even before the PUSH and making new PR.
+ - This practice will help to avoid unnecessary code conflicts.
     
 # How to view your commit history in local
 
