@@ -7,7 +7,7 @@ def find_all_age_suicide_rate(dataframe):
 
 def pivot_longer_age_columns_to_one(dataframe, is_include_allage = False):
     # Do Melting - Tranform/Combine the multiple  column names of different age groups into one column "Age"
-    value_vars_list = ["80_above","70to79", "60to69","40to49", "30to39", "20to29", "10to19"]
+    value_vars_list = ["80_above","70to79", "60to69", "50to59", "40to49", "30to39", "20to29", "10to19"]
 
     if is_include_allage :
         value_vars_list = value_vars_list.append("all_age")
