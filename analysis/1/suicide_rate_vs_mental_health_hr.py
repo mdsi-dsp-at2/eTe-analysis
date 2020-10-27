@@ -25,7 +25,7 @@ data_reader = SuicideDataReader()
 
 # Load Suicide Rate data
 suicide_rate_data = data_reader.read_data(SuicideProcessedData.SUICIDE_RATES)
-#print(suicide_rate_dataframe)
+print(suicide_rate_data)
 
 # Load Human Resource data
 hr_data = data_reader.read_data(SuicideRawData.HUMAN_RESOURCES)
@@ -33,15 +33,15 @@ hr_data = data_reader.read_data(SuicideRawData.HUMAN_RESOURCES)
 
 # ========= Prepare Data =========
 # Get the total suicide rate of all different ages using Data Reader Class
-suicide_rate_dataframe = data_reader.add_up_suicide_rate_all_ages(suicide_rate_data)
+#suicide_rate_dataframe = data_reader.add_up_suicide_rate_all_ages(suicide_rate_data)
 #print(suicide_rate_dataframe.head())
 
 # Filter the suicide rate data for 
-suicide_rate_dataframe = suicide_rate_dataframe[["country", "all_age", "sex"]]
+suicide_rate_dataframe = suicide_rate_data[["country", "all_age", "sex"]]
 
 # Merge the two dataframes for plotting purpose
 merged_dataframe = pd.merge(suicide_rate_dataframe, hr_data, on="country")
-print(merged_dataframe.head())
+#print(merged_dataframe.head())
 
 # ========= Plotting (1) =========
 #Plotting to to visualise the association between Suicide rate of All age and Psychiatrists
