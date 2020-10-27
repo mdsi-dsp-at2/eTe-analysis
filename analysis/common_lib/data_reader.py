@@ -89,3 +89,6 @@ class SuicideDataReader:
                 data = pd.melt(data, id_vars = ['country','sex'], var_name = 'age_range', value_name = 'suicide_rate')
         
         return(data)
+
+    
+

@@ -12,29 +12,31 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import sys
 
-# Importing customised functions which handling data wrangling
-import common_functions as cf
+# Importing Customised Common Data Reader Class
+sys.path.append(os.path.abspath('..'))
+from common_lib.data_reader import SuicideDataReader, SuicideProcessedData, SuicideRawData
 
 # ========= Getting Data =========
 
-suicide_rate_data_filepath = os.path.join("..","..","processed_data", "crude_suicide_rates.csv")
-suicide_rate_dataframe = pd.read_csv(suicide_rate_data_filepath, index_col=0)
-#print(suicide_rate_dataframe.head())
+# Use common Data Reader Class to load data
+data_reader = SuicideDataReader()
 
-hr_data_filepath = os.path.join("..","..","raw_data", "human_resources.csv")
-hr_dataframe = pd.read_csv(hr_data_filepath, index_col=0)
+# Load Suicide Rate data
+suicide_rate_data = data_reader.read_data(SuicideProcessedData.SUICIDE_RATES)
+# print(suicide_rate_data)
+
+# Load Human Resource data
+hr_data = data_reader.read_data(SuicideRawData.HUMAN_RESOURCES)
 #print(hr_dataframe.head())
 
 # ========= Prepare Data =========
-suicide_rate_dataframe = cf.find_all_age_suicide_rate(suicide_rate_dataframe)
-#print(suicide_rate_dataframe.head())
 
 # Filter the suicide rate data for 
-suicide_rate = suicide_rate_dataframe[["Country", "all_age", "Sex"]]
+suicide_rate_dataframe = suicide_rate_data[["country", "all_age", "sex"]]
 
 # Merge the two dataframes for plotting purpose
-merged_dataframe = pd.merge(suicide_rate, hr_dataframe, on="Country")
-print(merged_dataframe.head())
+merged_dataframe = pd.merge(suicide_rate_dataframe, hr_data, on="country")
+#print(merged_dataframe.head())
 
 # ========= Plotting (1) =========
 #Plotting to to visualise the association between Suicide rate of All age and Psychiatrists
@@ -45,7 +47,7 @@ sns.set_style("darkgrid", {"axes.facecolor": ".9"})
 # https://seaborn.pydata.org/tutorial/aesthetics.html
 # https://seaborn.pydata.org/generated/seaborn.lmplot.html
 
-plot_psy = sns.lmplot(data= merged_dataframe, x="Psychiatrists", y= "all_age", palette="Set1", col="Sex", hue="Sex")
+plot_psy = sns.lmplot(data= merged_dataframe, x="psychiatrists", y= "all_age", palette="Set1", col="sex", hue="sex")
 plot_psy.set_axis_labels("Psychiatrists 100,000 population", "Suicide Rate in All age")
 
 # This is to adjust the axis and display the main title
@@ -59,7 +61,7 @@ plt.show()
 # ========= Plotting (2) =========
 # Plotting to visualise the association between Suicide rate of All age and Nurses among Sexes
 
-plot_nurses = sns.lmplot(data= merged_dataframe, x="Nurses", y= "all_age_suicide_rate", palette="Set1", col="Sex", hue="Sex") 
+plot_nurses = sns.lmplot(data= merged_dataframe, x="nurses", y= "all_age", palette="Set1", col="sex", hue="sex") 
 plot_nurses.set_axis_labels("Nurses per 100,000 population", "Suicide Rate in All Ages")
 
 # This is to adjust the axis and display the main title
@@ -72,7 +74,7 @@ plt.show()
 # ========= Plotting (3) =========
 #Plotting to visualise the association between Suicide rate of All age and Psychiatrists among Sexes
 
-plot_psy = sns.lmplot(data= merged_dataframe, x="Psychologists", y= "all_age_suicide_rate", palette="Set1", col="Sex", hue="Sex") 
+plot_psy = sns.lmplot(data= merged_dataframe, x="psychologists", y= "all_age", palette="Set1", col="sex", hue="sex") 
 plot_psy.set_axis_labels("Psychologists per 100,000 population", "Suicide Rate in All Ages")
 
 # This is to adjust the axis and display the main title
