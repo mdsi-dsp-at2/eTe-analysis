@@ -86,7 +86,8 @@ class SuicideDataReader:
             if (tidy):
                 #gather the suicide rates in multiple columns of ages into two columns: age_range to keep the list of age 
                 #range, and suicide_rate to store the value
-                data = pd.melt(data, id_vars = ['country','sex'], var_name = 'age_range', value_name = 'suicide_rate')
+                vars_list = ["80_above","70to79", "60to69", "50to59", "40to49", "30to39", "20to29", "10to19"]
+                data = pd.melt(data, id_vars = ['country','sex'], value_vars=vars_list,  var_name = 'age_range', value_name = 'suicide_rate')
         
         return(data)
 
