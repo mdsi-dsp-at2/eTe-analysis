@@ -16,7 +16,7 @@ processed_suicide_rates_dataframe["Country"] = processed_suicide_rates_dataframe
 processed_suicide_rates_dataframe["Sex"] = processed_suicide_rates_dataframe["Sex"].str.strip()
 
 # add the suicide rate of all age ranges and store in "all_age" column
-processed_suicide_rates_dataframe["all_age"] = processed_suicide_rates_dataframe.iloc[:, 2:10].sum(axis=1)
+processed_suicide_rates_dataframe["all_age"] =  round(processed_suicide_rates_dataframe.iloc[:, 2:10].sum(axis=1), 3)
 
 # save the processed data to csv file
 processed_suicide_rates_data_filepath = os.path.join("processed_data", "crude_suicide_rates.csv")
