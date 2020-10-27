@@ -90,9 +90,5 @@ class SuicideDataReader:
         
         return(data)
 
-    def add_up_suicide_rate_all_ages(self, source) :
-        source["all_age"] = source["80_above"]+ source["70to79"] + source["60to69"]+ source["50to59"]+ source["40to49"]+ source["30to39"]+ source["20to29"] + source["10to19"]
-        return (source)
-
     
 
