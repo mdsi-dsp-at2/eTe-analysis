@@ -12,11 +12,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import sys
 
+# Importing Customised Common Data Reader Class
 sys.path.append(os.path.abspath('..'))
 from common_lib.data_reader import SuicideDataReader, SuicideProcessedData, SuicideRawData
-
-# Importing customised functions which handling data wrangling
-import common_functions as cf
 
 # ========= Getting Data =========
 
@@ -25,16 +23,13 @@ data_reader = SuicideDataReader()
 
 # Load Suicide Rate data
 suicide_rate_data = data_reader.read_data(SuicideProcessedData.SUICIDE_RATES)
-print(suicide_rate_data)
+# print(suicide_rate_data)
 
 # Load Human Resource data
 hr_data = data_reader.read_data(SuicideRawData.HUMAN_RESOURCES)
 #print(hr_dataframe.head())
 
 # ========= Prepare Data =========
-# Get the total suicide rate of all different ages using Data Reader Class
-#suicide_rate_dataframe = data_reader.add_up_suicide_rate_all_ages(suicide_rate_data)
-#print(suicide_rate_dataframe.head())
 
 # Filter the suicide rate data for 
 suicide_rate_dataframe = suicide_rate_data[["country", "all_age", "sex"]]
