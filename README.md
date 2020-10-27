@@ -21,14 +21,18 @@ Project Title: Collaborative Development of an end to end project using Centrali
              
  # Data 
  The raw dataset is about Mental Health and Suicide Rates
- There are four csv files 
+ There are five csv files:
+ * source : https://www.kaggle.com/twinkle0705/mental-health-and-suicide-rates?select=Human+Resources.csv 
  - age_standardized_suicide_rates.csv : Age standardized suicide rates for different years
  - crude_suicide_rates.csv : Suicide rates(year 2016) per 100000 population in different age range
  - facilities.csv : Facilities available of different countries in 2016
  - human_resources.csv : Human resources available of different countries in 2016
 
+* source: https://data.worldbank.org/indicator
+- socioeconomic_indicator.csv: the latest poverty rate and GINI coefficient (income inequality) per country
 
- - source : https://www.kaggle.com/twinkle0705/mental-health-and-suicide-rates?select=Human+Resources.csv
+* source: https://data.world/afterschool/teen-stress-mental-health-poll-on-after-school/
+- mental_health_poll_updated.csv: survey on 35.000 teens regarding their stress and mental health, along with actions they take in times of need
  
  # How to start ?
  - Fork this repository to your personal remote repository(account)
