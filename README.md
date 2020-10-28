@@ -34,7 +34,7 @@ Project Title: Collaborative Development of an end to end project using Centrali
 * source: https://data.world/afterschool/teen-stress-mental-health-poll-on-after-school/
 - mental_health_poll_updated.csv: survey on 35.000 teens regarding their stress and mental health, along with actions they take in times of need
  
- # How to start ?
+ # How to start with the repo
  - Fork this repository to your personal remote repository(account)
  
      This will be your own remote repo to which you push your locally committed changes and 
@@ -56,6 +56,15 @@ Project Title: Collaborative Development of an end to end project using Centrali
   Then every thing is ready. So there are altogether three stages of repository.
   
   local repo --> personal remote repo --> team's master remote repo
+  
+  # Commit the local changes to local and (personal)remote repo
+  
+  - Secure the local changes 
+      git add 
+      git commit -m "your change message"
+      
+  - Push to remote repo 
+      git push
  
  
  # General Rule of Thumb in Creating Tasks, Assigining Tasks and Making Pull Requests
