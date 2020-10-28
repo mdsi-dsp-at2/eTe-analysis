@@ -57,11 +57,12 @@ Project Title: Collaborative Development of an end to end project using Centrali
   
   local repo --> personal remote repo --> team's master remote repo
   
-  # Commit the local changes to local and (personal)remote repo
+  # Commit the local changes to local and (personal) remote repo
   
   - Secure the local changes 
 
-      git add 
+      git add <<your file>>
+
       git commit -m "your change message"
       
   - Push to remote repo 
