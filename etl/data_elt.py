@@ -20,7 +20,7 @@ processed_suicide_rates_dataframe["all_age"] = processed_suicide_rates_dataframe
 
 # save the processed data to csv file
 processed_suicide_rates_data_filepath = os.path.join("processed_data", "crude_suicide_rates.csv")
-processed_suicide_rates_dataframe.to_csv(processed_suicide_rates_data_filepath)
+processed_suicide_rates_dataframe.to_csv(processed_suicide_rates_data_filepath, index = False)
 
 # ========= Clean crude_suicide_rates Data =========
 country_facilities_data_filepath = os.path.join("raw_data", "facilities.csv")
@@ -31,4 +31,4 @@ processed_country_facilities_dataframe = country_facilities_dataframe.rename(col
 
 # save the processed data to csv file
 processed_country_facilities_data_filepath = os.path.join("processed_data", "facilities.csv")
-processed_country_facilities_dataframe.to_csv(processed_country_facilities_data_filepath)
+processed_country_facilities_dataframe.to_csv(processed_country_facilities_data_filepath, index = False)
