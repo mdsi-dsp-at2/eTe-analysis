@@ -60,10 +60,12 @@ Project Title: Collaborative Development of an end to end project using Centrali
   # Commit the local changes to local and (personal)remote repo
   
   - Secure the local changes 
+
       git add 
       git commit -m "your change message"
       
   - Push to remote repo 
+
       git push
  
  
