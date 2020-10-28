@@ -10,7 +10,7 @@ Project Title: Collaborative Development of an end to end project using Centrali
 
 /processed_data - Store cleaned data
 
-/analysis - for code of EDA and insights
+/analysis - Store code of EDA and insights
 
              /analysis/1 - analysis code by HPT
              /analysis/2 - analysis code by KMW
@@ -38,7 +38,7 @@ Project Title: Collaborative Development of an end to end project using Centrali
  - Fork this repository to your personal remote repository(account)
  
      This will be your own remote repo to which you push your locally committed changes and 
-     from which (browser interface) your pull request will be made.
+     from which (browser interface) you will make your pull request.
  
  - In your local machine, create local repository, 
     in your preferred workspace,
