@@ -32,7 +32,7 @@ hr_data = data_reader.read_data(SuicideRawData.HUMAN_RESOURCES)
 # ========= Prepare Data =========
 
 # Filter the suicide rate data for 
-suicide_rate_dataframe = suicide_rate_data[["country", "all_age", "sex"]]
+suicide_rate_dataframe = suicide_rate_data[suicide_rate_data["sex"] != "Both sexes"][["country", "all_age", "sex"]]
 
 # Merge the two dataframes for plotting purpose
 merged_dataframe = pd.merge(suicide_rate_dataframe, hr_data, on="country")

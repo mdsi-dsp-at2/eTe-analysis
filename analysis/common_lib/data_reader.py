@@ -27,7 +27,7 @@ class SuicideDataReader:
         e.g., AGE_STANDARDIZED and SUICIDE_RATES, as other files have come in a tidy form).
     '''
     
-    def __init__(self, relative_path = '../../'):
+    def __init__(self, relative_path = "../../"):
         '''Initiate the SuicideDataReader object, including specifying the file path and file name of each 
            SuicideRawData and SuicideProcessedData member.
             
@@ -36,15 +36,15 @@ class SuicideDataReader:
         '''
         self.filepath = {}
         #raw data
-        self.filepath.update({SuicideRawData.AGE_STANDARDIZED : relative_path+'raw_data/age_standardized_suicide_rates.csv'})
-        self.filepath.update({SuicideRawData.SUICIDE_RATES : relative_path+'raw_data/crude_suicide_rates.csv'})
-        self.filepath.update({SuicideRawData.FACILITIES : relative_path+'raw_data/facilities.csv'})
-        self.filepath.update({SuicideRawData.SOCIOECONOMIC : relative_path+'raw_data/socioeconomic_indicator.csv'})
-        self.filepath.update({SuicideRawData.HUMAN_RESOURCES : relative_path+'raw_data/human_resources.csv'})
-        self.filepath.update({SuicideRawData.MENTAH_HEALTH_POLL : relative_path+'raw_data/mental_health_poll_updated.csv'})
+        self.filepath.update({SuicideRawData.AGE_STANDARDIZED : relative_path + "raw_data/age_standardized_suicide_rates.csv"})
+        self.filepath.update({SuicideRawData.SUICIDE_RATES : relative_path + "raw_data/crude_suicide_rates.csv"})
+        self.filepath.update({SuicideRawData.FACILITIES : relative_path + "raw_data/facilities.csv"})
+        self.filepath.update({SuicideRawData.SOCIOECONOMIC : relative_path + "raw_data/socioeconomic_indicator.csv"})
+        self.filepath.update({SuicideRawData.HUMAN_RESOURCES : relative_path + "raw_data/human_resources.csv"})
+        self.filepath.update({SuicideRawData.MENTAH_HEALTH_POLL : relative_path + "raw_data/mental_health_poll_updated.csv"})
         #processed data
-        self.filepath.update({SuicideProcessedData.SUICIDE_RATES : relative_path+'processed_data/crude_suicide_rates.csv'})
-        self.filepath.update({SuicideProcessedData.FACILITIES : relative_path+'processed_data/facilities.csv'})
+        self.filepath.update({SuicideProcessedData.SUICIDE_RATES : relative_path + "processed_data/crude_suicide_rates.csv"})
+        self.filepath.update({SuicideProcessedData.FACILITIES : relative_path + "processed_data/facilities.csv"})
         
     def read_data(self, source, tidy = False):
         '''Read the CSV file and load it into a data frame.
@@ -59,13 +59,13 @@ class SuicideDataReader:
         '''
         #check the arguments, where it only allows to be filled with the member of SuicideRawData or SuicideProcessedData
         if (not isinstance(source,SuicideRawData)) and (not isinstance(source,SuicideProcessedData)):
-            raise Exception('argument should be filled with SuicideRawData or SuicideProcessedData. '
-                            'Try SuicideRawData.AGE_STANDARDIZED and/or SuicideProcessedData.FACILITIES')
+            raise Exception("argument should be filled with SuicideRawData or SuicideProcessedData. "
+                            "Try SuicideRawData.AGE_STANDARDIZED and/or SuicideProcessedData.FACILITIES")
             
         #read the data and load them into a dataframe
         data = pd.read_csv(self.filepath[source])
         #for consistency purposes, change the case of the column names into a lower case and remove extra spaces
-        data = data.rename(columns=lambda x: x.strip(' ').lower())
+        data = data.rename(columns = lambda x: x.strip(" ").lower())
         
         #additional process applied to a particular dataset, such as AGE_STANDARDIZED and SUICIDE_RATES
         #1. remove extra spaces from a particular column
@@ -74,19 +74,20 @@ class SuicideDataReader:
         if (source == SuicideRawData.AGE_STANDARDIZED):
             #remove the extra spaces in the value of sex's column to ensure the filtering able to return valid rows
             #(no need to add spaces when performs the filtering)
-            data['sex'] = data['sex'].str.strip(' ')
+            data["sex"] = data["sex"].str.strip(" ")
             if (tidy):
                 #gather the suicide rates in multiple columns of years into two columns: year to keep the reference year, 
                 #and age_standardized to store the value
-                data = pd.melt(data, id_vars = ['country','sex'], var_name = 'year', value_name = 'age_standardized')
+                data = pd.melt(data, id_vars = ["country","sex"], var_name = "year", value_name = "age_standardized")
         elif (source == SuicideRawData.SUICIDE_RATES) or (source == SuicideProcessedData.SUICIDE_RATES):
             #remove the extra spaces in the value of sex's column to ensure the filtering able to return valid rows
             #(no need to add spaces when performs the filtering)
-            data['sex'] = data['sex'].str.strip(' ')
+            data["sex"] = data["sex"].str.strip(" ")
             if (tidy):
                 #gather the suicide rates in multiple columns of ages into two columns: age_range to keep the list of age 
                 #range, and suicide_rate to store the value
-                data = pd.melt(data, id_vars = ['country','sex'], var_name = 'age_range', value_name = 'suicide_rate')
+                vars_list = ["80_above","70to79", "60to69", "50to59", "40to49", "30to39", "20to29", "10to19"]
+                data = pd.melt(data, id_vars = ["country","sex"], value_vars = vars_list,  var_name = "age_range", value_name = "suicide_rate")
         
         return(data)
 
