@@ -25,7 +25,7 @@ suicide_rate_dataframe = data_reader.read_data(SuicideProcessedData.SUICIDE_RATE
 # ========= plotting graph =========
 
 # Plotting is to visualise the suicide rate distribution in FacetGrid
-sns.set_style("dark")
+sns.set_style("ticks")
 
 p = sns.FacetGrid(suicide_rate_dataframe, hue="sex", col="age_range", col_wrap=4)
 p.map(sns.barplot,"sex", "suicide_rate", order=["Male", "Female"])
