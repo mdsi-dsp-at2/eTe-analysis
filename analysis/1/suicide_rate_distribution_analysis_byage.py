@@ -25,15 +25,15 @@ suicide_rate_dataframe = data_reader.read_data(SuicideProcessedData.SUICIDE_RATE
 # ========= plotting graph =========
 
 # Plotting is to visualise the suicide rate distribution in FacetGrid
-sns.set_style("dark")
+sns.set_style("ticks")
 
-p = sns.FacetGrid(suicide_rate_dataframe, hue="sex", col="age_range", col_wrap=4)
-p.map(sns.barplot,"sex", "suicide_rate", order=["Male", "Female"])
+age_plot = sns.FacetGrid(suicide_rate_dataframe, hue="sex", col="age_range", col_wrap=4)
+age_plot.map(sns.barplot,"sex", "suicide_rate", order=["Male", "Female"])
 
-p.set_axis_labels("", "Suicide Rate")
+age_plot.set_axis_labels("", "Suicide Rate \n (per 100.000 population)")
 
 # This is to adjust the axis and display the main title
 # without it, seaborn's facet titles and the main title are overlapped
 plt.subplots_adjust(top=0.9)
-p.fig.suptitle("Suicide Rate Distribution Analysis by Age")
+age_plot.fig.suptitle("Suicide Rate Distribution Analysis by Age")
 plt.show()
