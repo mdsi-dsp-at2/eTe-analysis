@@ -55,9 +55,9 @@ print(suicide_rate_allage_bothsex)
 
 # The plot to visualise how many countries are in each range of suicide rate
 sns.countplot(x="suicide_rate_class", data=suicide_rate_allage_bothsex, color="c")
-plt.title("Suicide Rate distribution of Both Male and Female in the Countries")
+plt.title("Suicide Rate Distribution in the Countries in 2016")
 plt.ylabel("Number of Countries")
-plt.xlabel("Suicide Rates Range")
+plt.xlabel("Suicide Rate Ranges \n per 100,000 population")
 plt.show()
 
 # ====== Prepare Data for Plot (2) ======
@@ -76,7 +76,7 @@ rate_bin_list=["0-100", "100-200", "200-300", "300-400", ">400"]
 
 ##https://seaborn.pydata.org/tutorial/categorical.html
 sns.catplot(x="suicide_rate_class", hue="sex", kind="count", data=suicide_rate_cat_by_sex, order=rate_bin_list)
-plt.title("Suicide Rate Distribution in the Countries by Sex")
+plt.title("Suicide Rate Distribution in the Countries by Sex \n in 2016")
 plt.ylabel("Number of Countries")
-plt.xlabel("Suicide Rates Range")
+plt.xlabel("Suicide Rate Ranges \n per 100,000 population")
 plt.show()
