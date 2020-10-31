@@ -48,7 +48,7 @@ sns.set_style("darkgrid", {"axes.facecolor": ".9"})
 # https://seaborn.pydata.org/generated/seaborn.lmplot.html
 
 plot_psy = sns.lmplot(data= merged_dataframe, x="psychiatrists", y= "all_age", palette="Set1", col="sex", hue="sex")
-plot_psy.set_axis_labels("Psychiatrists 100,000 population", "Suicide Rate in All age")
+plot_psy.set_axis_labels("Psychiatrists \n per 100,000 population", "Suicide Rate in All age")
 
 # This is to adjust the axis and display the main title
 # without it, seaborn"s facet titles and the main title are overlapped
@@ -62,7 +62,7 @@ plt.show()
 # Plotting to visualise the association between Suicide rate of All age and Nurses among Sexes
 
 plot_nurses = sns.lmplot(data= merged_dataframe, x="nurses", y= "all_age", palette="Set1", col="sex", hue="sex") 
-plot_nurses.set_axis_labels("Nurses per 100,000 population", "Suicide Rate in All Ages")
+plot_nurses.set_axis_labels("Nurses \n per 100,000 population", "Suicide Rate in All Ages")
 
 # This is to adjust the axis and display the main title
 # without it, seaborn"s facet titles and the main title are overlapped
@@ -75,7 +75,7 @@ plt.show()
 #Plotting to visualise the association between Suicide rate of All age and Psychiatrists among Sexes
 
 plot_psy = sns.lmplot(data= merged_dataframe, x="psychologists", y= "all_age", palette="Set1", col="sex", hue="sex") 
-plot_psy.set_axis_labels("Psychologists per 100,000 population", "Suicide Rate in All Ages")
+plot_psy.set_axis_labels("Psychologists \n per 100,000 population", "Suicide Rate in All Ages")
 
 # This is to adjust the axis and display the main title
 # without it, seaborn"s facet titles and the main title are overlapped

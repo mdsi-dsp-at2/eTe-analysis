@@ -30,10 +30,10 @@ sns.set_style("ticks")
 age_plot = sns.FacetGrid(suicide_rate_dataframe, hue="sex", col="age_range", col_wrap=4)
 age_plot.map(sns.barplot,"sex", "suicide_rate", order=["Male", "Female"])
 
-age_plot.set_axis_labels("", "Suicide Rate \n (per 100.000 population)")
+age_plot.set_axis_labels("", "Suicide Rate")
 
 # This is to adjust the axis and display the main title
 # without it, seaborn's facet titles and the main title are overlapped
 plt.subplots_adjust(top=0.9)
-age_plot.fig.suptitle("Suicide Rate Distribution Analysis by Age")
+age_plot.fig.suptitle("Suicide Rate Distribution Analysis by Age \n in 2016 per 100.000 population")
 plt.show()
