@@ -10,31 +10,31 @@ Project Title: Collaborative Development of an end to end project using Centrali
 
 /processed_data - Store cleaned data
 
-/analysis - Store code of EDA and insights
+/analysis - Store code of EDA, Analysis and insights
 
              /analysis/1 - analysis code by HPT
              /analysis/2 - analysis code by KMW
              /analysis/3 - analysis code by MH
              /analysis/4 - analysis code by IFS
-             /analysis/3 - analysis code by PYK
+             /analysis/5 - analysis code by PYK
+			 /analysis/common_lib - store common libraries such as data reader class
+			 /analysis/sample - store standardized code templates for syntax and format
              
              
- # Data 
- The raw dataset is about Mental Health and Suicide Rates
- There are five csv files:
- * source : https://www.kaggle.com/twinkle0705/mental-health-and-suicide-rates?select=Human+Resources.csv 
- - age_standardized_suicide_rates.csv : Age standardized suicide rates for different years
- - crude_suicide_rates.csv : Suicide rates(year 2016) per 100000 population in different age range
- - facilities.csv : Facilities available of different countries in 2016
- - human_resources.csv : Human resources available of different countries in 2016
-
-* source: https://data.worldbank.org/indicator
-- socioeconomic_indicator.csv: the latest poverty rate and GINI coefficient (income inequality) per country
-
-* source: https://data.world/afterschool/teen-stress-mental-health-poll-on-after-school/
-- mental_health_poll_updated.csv: survey on 35.000 teens regarding their stress and mental health, along with actions they take in times of need
+ # Data Sources
+ The raw datasets are about Mental Health and Suicide Rates.
  
- # How to start with the repo
+ * source 1 : https://www.kaggle.com/twinkle0705/mental-health-and-suicide-rates?select=Human+Resources.csv 
+	 - age_standardized_suicide_rates.csv : Age standardized suicide rates for different years
+	 - crude_suicide_rates.csv : Suicide rates(year 2016) per 100000 population in different age range
+	 - facilities.csv : Facilities available of different countries in 2016
+	 - human_resources.csv : Human resources available of different countries in 2016
+
+* source 2 : https://data.worldbank.org/indicator
+	 - socioeconomic_indicator.csv: the latest poverty rate and GINI coefficient (income inequality) per country
+
+ 
+ # How to start with the repository
  - Fork this repository to your personal remote repository(account)
  
      This will be your own remote repo to which you push your locally committed changes and 
@@ -61,7 +61,7 @@ Project Title: Collaborative Development of an end to end project using Centrali
   
   - Secure the local changes 
 
-      git add <<your file>>
+      git add your_file_name.ext
 
       git commit -m "your change message"
       
@@ -82,7 +82,7 @@ Project Title: Collaborative Development of an end to end project using Centrali
 
     git pull https://github.com/mdsi-dsp-at2/eTe-analysis
     
- - Strongly encourage to do this even before the PUSH and making new PR.
+ - Strongly encourage to do this even before the PUSH and making new Pull Request.
  - This practice will help to avoid unnecessary code conflicts.
     
 # How to view your commit history in local
