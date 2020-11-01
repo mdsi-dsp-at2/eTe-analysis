@@ -17,8 +17,8 @@ Project Title: Collaborative Development of an end to end project using Centrali
              /analysis/3 - analysis code by MH
              /analysis/4 - analysis code by IFS
              /analysis/5 - analysis code by PYK
-			 /analysis/common_lib - store common libraries such as data reader class
-			 /analysis/sample - store standardized code templates for syntax and format
+	     /analysis/common_lib - store common libraries such as data reader class
+	     /analysis/sample - store standardized code templates for syntax and format
              
              
  # Data Sources
